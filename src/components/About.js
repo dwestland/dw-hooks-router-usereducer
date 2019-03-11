@@ -11,6 +11,7 @@ export default function About() {
 
   useEffect(() => {
     console.log('%c useEffect zip ', 'background: black; color: white', )
+    // dispatch({ type: "ZIP", payload: response.data })
     localStorage.setItem('zip', zip)
   }, [zip])
 

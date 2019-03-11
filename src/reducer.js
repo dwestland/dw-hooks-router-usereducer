@@ -5,7 +5,12 @@ export default function reducer(state, action) {
         ...state,
         todos: action.payload
       }
-    case "SET_SCREEN_WIDTH":
+      case "SET_SCREEN_WIDTH":
+      return {
+        ...state,
+        todos: action.payload
+      }
+      case "SET_ZIP":
       return {
         ...state,
         todos: action.payload
