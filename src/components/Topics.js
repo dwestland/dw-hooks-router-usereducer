@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Route, Link } from "react-router-dom";
 
 function Topic({ match }) {
@@ -8,11 +8,21 @@ function Topic({ match }) {
 
 
 export default function Topics({ match }) {
-  console.log('%c match ', 'background: black; color: white', match)
+
+  // Simple Counter - local sate test
+  const [count, setCount] = useState(0)
+
+  useEffect(() => {
+    document.title = `Count: ${count}`
+  }, [count])
 
   return (
     <div>
       <h2>Topics</h2>
+
+      <p>{count}</p>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
 
       <ul>
         <li>

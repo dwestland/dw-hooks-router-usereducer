@@ -1,8 +1,8 @@
 import React, { useContext, useReducer, useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route} from "react-router-dom"
 
-import DogMeetDogContext from '../context'
-import dogMeetDogReducer from '../reducer'
+import DwContext from '../context'
+import dwReducer from '../reducer'
 
 import Header from './Header'
 import Home from './Home'
@@ -12,13 +12,13 @@ import Topics from './Topics'
 // export const UserContext = React.createContext()
 
 export default function App() {
-  const initialState = useContext(DogMeetDogContext)
-  const [state, dispatch] = useReducer(dogMeetDogReducer, initialState)
+  const initialState = useContext(DwContext)
+  const [state, dispatch] = useReducer(dwReducer, initialState)
 
-  // const { state: { zip = {} }, dispatch } = useContext(DogMeetDogContext)
+  // const { state: { zip = {} }, dispatch } = useContext(DwContext)
 
   return (
-    <DogMeetDogContext.Provider value={{ state, dispatch}}>
+    <DwContext.Provider value={{ state, dispatch}}>
       <Router>
         <div>
           <Header />
@@ -27,10 +27,10 @@ export default function App() {
           <Route path="/topics" component={Topics} />
         </div>
       </Router>
-      <h1>{DogMeetDogContext.zip}</h1>
-    </DogMeetDogContext.Provider>
+      <h1>{state.zip}</h1>
+    </DwContext.Provider>
   )
 }
 
 
-// TODO - Move DogMeetDogContext to index.js ???
+// TODO - Move DwContext to index.js ???

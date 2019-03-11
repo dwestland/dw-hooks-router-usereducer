@@ -1,11 +1,11 @@
 import React from 'react'
 
-const DogMeetDogContext = React.createContext({
+const DwContext = React.createContext({
   isOnline: false,
   screenWidth: 0,
   zip: 90025,
-  is_eu: '',
-  country_code: '',
+  isEu: null,
+  countryCode: '',
 })
 
-export default DogMeetDogContext
+export default DwContext

@@ -1,38 +1,49 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import fetch from 'isomorphic-fetch'
+import * as dwReducer from '../reducer'
+import DwContext from '../context'
 
 export default function About() {
-  const IPDATA_KEY = '43cf04496859365fbad92d9399f34f844805aa9e2288b0a279dc0ce5'
+  const { state, dispatch } = useContext(DwContext)
+  const IPDATA_KEY = 'x'
   const url = `https://api.ipdata.co?api-key=${IPDATA_KEY}`
 
 
-  // Set zip
-  const [zip, setZip] = useState('no zip yet')
+  // // Set zip
+  // const [zip, setZip] = useState('no zip yet')
 
-  useEffect(() => {
-    console.log('%c useEffect zip ', 'background: black; color: white', )
-    // dispatch({ type: "ZIP", payload: response.data })
-    localStorage.setItem('zip', zip)
-  }, [zip])
+  // useEffect(() => {
+  //   dispatch({ type: dwReducer.SET_ZIP, payload: zip })
+  //   localStorage.setItem('zip', zip)
+  // }, [zip])
 
 
-  // Set isEu
-  const [isEu, setIsEu] = useState(null)
+  // // Set isEu
+  // const [isEu, setIsEu] = useState(null)
 
-  useEffect(() => {
-    console.log('%c useEffect isEu ', 'background: black; color: white', )
-    localStorage.setItem('isEu', isEu)
-  }, [isEu])
+  // useEffect(() => {
+  //   console.log('%c useEffect isEu ', 'background: black; color: white', )
+  //   dispatch({ type: dwReducer.SET_IS_EU, payload: isEu })
+  //   localStorage.setItem('isEu', isEu)
+  // }, [isEu])
 
-  // Set countryCode
-  const [countryCode, setCountryCode] = useState(null)
+  // // Set countryCode
+  // const [countryCode, setCountryCode] = useState(null)
 
-  useEffect(() => {
-    console.log('%c useEffect countryCode ', 'background: black; color: white', )
-    localStorage.setItem('countryCode', countryCode)
-  }, [countryCode])
+  // useEffect(() => {
+  //   console.log('%c useEffect countryCode ', 'background: black; color: white', )
+  //   dispatch({ type: dwReducer.SET_COUNTRY_CODE, payload: countryCode })
+  //   localStorage.setItem('countryCode', countryCode)
+  // }, [countryCode])
 
   // Fetching Ipdata
+
+  // if(localStorage.getItem(zip).length == 5) {
+  //   return null
+  // }
+
+  console.log('%c localStorage.getIem(zip).length ', 'background: red; color: white', localStorage.getItem('zip').length);
+
   useEffect(() => {
     fetch(url)
       .then(response => {
@@ -42,24 +53,22 @@ export default function About() {
         return response.json();
       })
       .then(data => {
-        console.log('%c fetch ', 'background: green; color: white', )
         console.log(data)
-        console.log(data.postal)
-        console.log(data.is_eu)
-        console.log(data.country_code)
-        setZip(data.postal)
-        setIsEu(data.is_eu)
-        setCountryCode(data.country_code)
+        // console.log(data.postal)
+        // console.log(data.is_eu)
+        // console.log(data.country_code)
+        // dispatch({ type: dwReducer.SET_ZIP, payload: data.postal })
+        // dispatch({ type: dwReducer.SET_IS_EU, payload: data.is_eu })
+        // dispatch({ type: dwReducer.SET_COUNTRY_CODE, payload: data.country_code })
+        // localStorage.setItem('zip', data.postal)
+        // localStorage.setItem('isEu', data.is_eu)
+        // localStorage.setItem('countryCode', data.country_code)
       })
   }, [])
-
-  console.log('%c I am at the bottom of the function (just before the return) ', 'background: red; color: white', )
 
   return (
     <div>
       <h2>About</h2>
-      {zip && <p>Zip: {zip}</p>}
-      {console.log('%c I just rendered ', 'background: red; color: white', )}
     </div>
   )
 }
