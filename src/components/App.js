@@ -8,6 +8,7 @@ import Header from './Header'
 import Home from './Home'
 import About from './About'
 import Topics from './Topics'
+import People from './People'
 
 // export const UserContext = React.createContext()
 
@@ -25,12 +26,9 @@ export default function App() {
           <Route exact path="/" component={Home} />
           <Route path="/about" component={About} />
           <Route path="/topics" component={Topics} />
+          <Route path="/people" component={People} />
         </div>
       </Router>
-      <h1>{state.zip}</h1>
     </DwContext.Provider>
   )
 }
-
-
-// TODO - Move DwContext to index.js ???
