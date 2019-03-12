@@ -3,11 +3,11 @@ import fetch from 'isomorphic-fetch'
 
 export default function People() {
 
-const [people, setPeople] = useState({})
+const [people, setPeople] = useState([])
 
   // Fetch ipdata.co client info
   useEffect(() => {
-    const url = 'https://randomuser.me/api/?nat=gb&results=10'
+    const url = 'https://randomuser.me/api/?nat=us&results=10'
     fetch(url)
       .then(response => {
         if (response.status >= 400) {
@@ -17,7 +17,7 @@ const [people, setPeople] = useState({})
       })
       .then(data => {
         console.log(data)
-        setPeople(data)
+        setPeople(data.results)
         // console.log(data.postal)
         // console.log(data.is_eu)
         // console.log(data.country_code)
@@ -34,11 +34,14 @@ const [people, setPeople] = useState({})
 
 console.log('%c people ', 'background: red; color: white', people)
 
-
+      // {people.map((person) => {
+      //   <h1>{person.name.first}</h1>
+      // })}
 
   return (
     <div>
       <h2>People</h2>
+
     </div>
   )
 }
