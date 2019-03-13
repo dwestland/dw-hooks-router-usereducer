@@ -32,16 +32,38 @@ const [people, setPeople] = useState([])
   }, [])
 
 
-console.log('%c people ', 'background: red; color: white', people)
+  console.log('%c people ', 'background: red; color: white', people)
 
-      // {people.map((person) => {
-      //   <h1>{person.name.first}</h1>
-      // })}
+
+  var array1 = [1, 4, 9, 16]
+  const map1 = array1.map(x => x * 2)
+  console.log('%c map1 ', 'background: blue; color: white', map1);
+
+
+  const peopleList = people.map((person, index) => {
+    return(
+      <Person
+        key={index}
+        PersonObj={person}
+      />
+    )
+  })
+
+  console.log('%c peopleList ', 'background: red; color: white', peopleList);
 
   return (
     <div>
       <h2>People</h2>
+      {peopleList}
+    </div>
+  )
+}
 
+function Person(props) {
+  let x = props.PersonObj
+  return(
+    <div>
+      <div>x</div>
     </div>
   )
 }
