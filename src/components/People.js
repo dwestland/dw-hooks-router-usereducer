@@ -31,14 +31,11 @@ const [people, setPeople] = useState([])
       })
   }, [])
 
-
   console.log('%c people ', 'background: red; color: white', people)
-
 
   var array1 = [1, 4, 9, 16]
   const map1 = array1.map(x => x * 2)
   console.log('%c map1 ', 'background: blue; color: white', map1);
-
 
   const peopleList = people.map((person, index) => {
     return(
@@ -54,16 +51,20 @@ const [people, setPeople] = useState([])
   return (
     <div>
       <h2>People</h2>
+      <p>Images from <a href="https://randomuser.me/" target="_blank" >https://randomuser.me/</a>, a free API for generating random user data</p>
       {peopleList}
     </div>
   )
 }
 
 function Person(props) {
-  let x = props.PersonObj
   return(
     <div>
-      <div>x</div>
+      <div>
+        <img src={props.PersonObj.picture.large} alt={props.PersonObj.name.first}></img>
+        <h4>{props.PersonObj.name.first}</h4>
+        <p>{props.PersonObj.location.city}, {props.PersonObj.location.state}</p>
+      </div>
     </div>
   )
 }
