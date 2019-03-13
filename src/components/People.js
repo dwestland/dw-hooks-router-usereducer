@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import fetch from 'isomorphic-fetch'
+import './People.css'
 
 export default function People() {
 
@@ -51,19 +52,27 @@ const [people, setPeople] = useState([])
   return (
     <div>
       <h2>People</h2>
-      <p>Images from <a href="https://randomuser.me/" target="_blank" >https://randomuser.me/</a>, a free API for generating random user data</p>
+      <p>Images from <a href="https://randomuser.me/" target="_blank" rel="noopener noreferrer" >
+      Random User API</a>, a free API for generating random user data</p>
       {peopleList}
     </div>
   )
 }
 
 function Person(props) {
+  const toTitleCase = (str) => {
+    return str.replace(/\w\S*/g, ((txt) => {
+        return txt.charAt(0).toUpperCase() + txt.substring(1).toLowerCase()
+    }))
+  }
+
   return(
     <div>
-      <div>
+      <div className="card">
         <img src={props.PersonObj.picture.large} alt={props.PersonObj.name.first}></img>
-        <h4>{props.PersonObj.name.first}</h4>
-        <p>{props.PersonObj.location.city}, {props.PersonObj.location.state}</p>
+        <h3 className="big-text">{toTitleCase(props.PersonObj.name.first)}</h3>
+        <p className="fine-print"><i>from</i></p>
+        <p>{toTitleCase(props.PersonObj.location.city)}, {toTitleCase(props.PersonObj.location.state)}</p>
       </div>
     </div>
   )
