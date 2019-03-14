@@ -54,7 +54,9 @@ const [people, setPeople] = useState([])
       <h2>People</h2>
       <p>Images from <a href="https://randomuser.me/" target="_blank" rel="noopener noreferrer" >
       Random User API</a>, a free API for generating random user data</p>
-      {peopleList}
+      <div className="people-container">
+        {peopleList}
+      </div>
     </div>
   )
 }
@@ -67,13 +69,11 @@ function Person(props) {
   }
 
   return(
-    <div>
       <div className="card">
         <img src={props.PersonObj.picture.large} alt={props.PersonObj.name.first}></img>
         <h3 className="big-text">{toTitleCase(props.PersonObj.name.first)}</h3>
         <p className="fine-print"><i>from</i></p>
-        <p>{toTitleCase(props.PersonObj.location.city)}, {toTitleCase(props.PersonObj.location.state)}</p>
+        <p>{toTitleCase(props.PersonObj.location.state)}</p>
       </div>
-    </div>
   )
 }

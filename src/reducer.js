@@ -1,5 +1,5 @@
 export const SET_IS_ONLINE = 'SET_IS_ONLINE'
-export const SET_SCREEN_WIDTH = 'SET_SCREEN_WIDTH'
+export const SET_DEVICE_SCREEN_SIZE = 'SET_DEVICE_SCREEN_SIZE'
 export const SET_ZIP = 'SET_ZIP'
 export const SET_IS_EU = 'SET_IS_EU'
 export const SET_COUNTRY_CODE = 'SET_COUNTRY_CODE'
@@ -11,10 +11,10 @@ export default function reducer(state, action) {
       ...state,
       isOnline: action.payload
     }
-    case SET_SCREEN_WIDTH:
+    case SET_DEVICE_SCREEN_SIZE:
     return {
       ...state,
-      screenWidth: action.payload
+      deviceScreenSize: action.payload
     }
     case SET_ZIP:
     return {

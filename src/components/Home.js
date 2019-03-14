@@ -20,12 +20,22 @@ export default function Home() {
   
   const resize = () => {
     screenWidth = window.innerWidth
-    dispatch({ type: dwReducer.SET_SCREEN_WIDTH, payload: screenWidth })
+    setDeviceScreenSize(screenWidth)
+  }
+  
+  const setDeviceScreenSize = (width) => {
+    if(width >= 1200) {
+      dispatch({ type: dwReducer.SET_DEVICE_SCREEN_SIZE, payload: 'desktop' })
+    } else if (width >= 600 && width <= 1199) {
+      dispatch({ type: dwReducer.SET_DEVICE_SCREEN_SIZE, payload: 'tablet' })
+    } else {
+      dispatch({ type: dwReducer.SET_DEVICE_SCREEN_SIZE, payload: 'phone' })
+    }
   }
 
   useEffect(() => {
     screenWidth = window.innerWidth
-    dispatch({ type: dwReducer.SET_SCREEN_WIDTH, payload: screenWidth })
+    setDeviceScreenSize(screenWidth)
     window.onresize = debounce(resize, 300);
   }, [])
 
@@ -69,7 +79,7 @@ export default function Home() {
       
       <h4>Global State</h4>
       <p>Internet Status: {state.isOnline ? "Online" : "Offline"}</p>
-      <p>Screen Width: {state.screenWidth}</p>
+      <p>Device Screen Size: {state.deviceScreenSize}</p>
       <p>Zip: {state.zip}</p>
       <p>Is EU: {isEuResult}</p>
       <p>Country Code: {state.countryCode}</p>
