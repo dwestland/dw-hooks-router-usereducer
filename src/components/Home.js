@@ -77,12 +77,7 @@ export default function Home() {
     <div>
       <h2>Home <span role="img" aria-label="Cool Kid emoji">😎</span></h2>
       
-      <h4>Global State</h4>
-      <p>Internet Status: {state.isOnline ? "Online" : "Offline"}</p>
-      <p>Device Screen Size: {state.deviceScreenSize}</p>
-      <p>Zip: {state.zip}</p>
-      <p>Is EU: {isEuResult}</p>
-      <p>Country Code: {state.countryCode}</p>
+
 
     </div>
   )
