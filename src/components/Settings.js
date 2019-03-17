@@ -9,8 +9,8 @@ export default function Settings() {
     console.log('%c PRODUCTION ', 'background: red; color: white', )
   }
 
-  let isEu = state.isEu
   let isEuResult
+  let isEu = state.isEu
   if(isEu === null) {
     isEuResult = "NULL"
   } else {

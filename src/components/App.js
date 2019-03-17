@@ -70,13 +70,6 @@ export default function App() {
         })
     }, [])
 
-    let isEu = state.isEu
-    if(isEu === null) {
-      let isEuResult = "NULL"
-    } else {
-      let isEuResult = isEu ? "TRUE" : "FALSE"
-    }
-
   return (
     <DwContext.Provider value={{ state, dispatch}}>
       <Router />
