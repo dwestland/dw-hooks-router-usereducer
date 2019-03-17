@@ -1,7 +1,5 @@
-
-
-import React, { useContext, useReducer } from 'react'
-import { BrowserRouter, Link, Route} from "react-router-dom"
+import React from 'react'
+import { BrowserRouter, Route} from "react-router-dom"
 
 import Header from './Header'
 
@@ -14,7 +12,6 @@ import Settings from './Settings'
 // Created Router component due to react-router bug:
 // The non-router components from React Router rely on being descendants of a router component (<BrowserRouter>, <MemoryRouter>, <Router>, etc.). That error means that you are trying to render a <Link> component from React Router, but that it doesn't have an ancestor router component.
 // https://github.com/ReactTraining/react-router/issues/6140
-
 
 export default function Router() {
 
@@ -30,5 +27,5 @@ export default function Router() {
         <Route path="/settings" component={Settings} />
       </div>
     </BrowserRouter>
-      )
-  }
+  )
+}
