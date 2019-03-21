@@ -9,6 +9,10 @@ export default function Settings() {
     console.log('%c PRODUCTION ', 'background: red; color: white', )
   }
 
+  if(process.env.NODE_ENV === 'development') {
+    console.log('%c DEVELOPMENT ', 'background: red; color: white', )
+  }
+
   let isEuResult
   let isEu = state.isEu
   if(isEu === null) {

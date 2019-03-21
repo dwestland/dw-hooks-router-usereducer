@@ -6,9 +6,11 @@ import DwContext from '../context'
 import dwReducer, * as CONSTANTS from '../reducer'
 import Router from './Router'
 
-// TODO Check local storage for zip before calling API
+import './App.css'
 
-export default function App() {
+// TODO Check local storage for zip before calling API ??
+
+export default function App(props) {
   const initialState = useContext(DwContext)
   const [state, dispatch] = useReducer(dwReducer, initialState)
 
@@ -19,6 +21,11 @@ export default function App() {
       window.addEventListener("online", () => (dispatch({ type: CONSTANTS.SET_IS_ONLINE, payload: true })))
       window.addEventListener("offline", () => (dispatch({ type: CONSTANTS.SET_IS_ONLINE, payload: false })))
     }, [])
+
+    const setOnlineEventListener = (zip) => {
+      dispatch({ type: CONSTANTS.SET_ZIP, payload: zip })
+      localStorage.setItem('zip', zip)
+    }
 
     // Screen width event listener
     let screenWidth
@@ -43,7 +50,19 @@ export default function App() {
       setDeviceScreenSize(screenWidth)
       window.onresize = debounce(resize, 300);
     }, [])
-  
+
+    // Set is EU
+    const setIsEu = (isEu) => {
+      dispatch({ type: CONSTANTS.SET_IS_EU, payload: isEu })
+      localStorage.setItem('isEu', isEu)
+    }
+
+    // Set country code
+    const setCountryCode = (countryCode) => {
+      dispatch({ type: CONSTANTS.SET_COUNTRY_CODE, payload: countryCode})
+      localStorage.setItem('countryCode', countryCode)
+    }
+
     // Fetch ipdata.co client info
     useEffect(() => {
       const ipdataKey = process.env.REACT_APP_IPDATA_KEY
@@ -60,14 +79,17 @@ export default function App() {
           console.log(data.postal)
           console.log(data.is_eu)
           console.log(data.country_code)
-          dispatch({ type: CONSTANTS.SET_ZIP, payload: data.postal })
-          dispatch({ type: CONSTANTS.SET_IS_EU, payload: data.is_eu })
-          dispatch({ type: CONSTANTS.SET_COUNTRY_CODE, payload: data.country_code })
-          localStorage.setItem('zip', data.postal)
-          localStorage.setItem('isEu', data.is_eu)
-          localStorage.setItem('countryCode', data.country_code)
+          setOnlineEventListener(data.postal)
+          setIsEu(data.is_eu)
+          setCountryCode(data.country_code)
           console.log('%c Fetch Success ', 'background: red; color: white', );
         })
+    }, [])
+
+    // Stop spinner after first render
+    useEffect(() => {
+      console.log('%c I am hiding the spinner ', 'background: red; color: white', );
+      props.hideLoader()
     }, [])
 
   return (
