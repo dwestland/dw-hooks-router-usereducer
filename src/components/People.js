@@ -19,16 +19,7 @@ const [people, setPeople] = useState([])
       .then(data => {
         console.log(data)
         setPeople(data.results)
-        // console.log(data.postal)
-        // console.log(data.is_eu)
-        // console.log(data.country_code)
-        // dispatch({ type: dwReducer.SET_ZIP, payload: data.postal })
-        // dispatch({ type: dwReducer.SET_IS_EU, payload: data.is_eu })
-        // dispatch({ type: dwReducer.SET_COUNTRY_CODE, payload: data.country_code })
-        // localStorage.setItem('zip', data.postal)
-        // localStorage.setItem('isEu', data.is_eu)
-        // localStorage.setItem('countryCode', data.country_code)
-        // console.log('%c Fetch Success ', 'background: red; color: white', );
+        console.log('%c Done fetching people ', 'background: red; color: white', );
       })
   }, [])
 
