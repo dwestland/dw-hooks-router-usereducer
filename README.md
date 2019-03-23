@@ -7,6 +7,7 @@ Add .env to .gitignore
 Create a .env file:
 
 ```REACT_APP_IPDATA_KEY = <ipdata API key (no quotes)>```
+
 Add to component to retrieve key
 
 ```const ipdataKey = process.env.REACT_APP_IPDATA_KEY```
