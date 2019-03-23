@@ -93,6 +93,8 @@ export default function App(props) {
       props.hideLoader()
     }, [])
 
+    console.log('%c I am App ', 'background: green; color: white', )
+
   return (
     <DwContext.Provider value={{ state, dispatch}}>
       <Router />
