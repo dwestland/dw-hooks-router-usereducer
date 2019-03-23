@@ -28,6 +28,7 @@ export default function App(props) {
     }
 
     // Screen width event listener
+    // Set device screen width
     let screenWidth
 
     const resize = () => {
