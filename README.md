@@ -11,3 +11,5 @@ Create a .env file:
 Add to component to retrieve key
 
 ```const ipdataKey = process.env.REACT_APP_IPDATA_KEY```
+
+***Note: You must create custom environment variables beginning with REACT_APP_***
