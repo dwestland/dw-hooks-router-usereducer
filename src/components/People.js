@@ -3,7 +3,8 @@ import fetch from 'isomorphic-fetch'
 import './People.css'
 
 export default function People() {
-  const [people, setPeople] = useState([])
+
+const [people, setPeople] = useState([])
 
   // Fetch ipdata.co client info
   useEffect(() => {
@@ -18,16 +19,21 @@ export default function People() {
       .then(data => {
         console.log(data)
         setPeople(data.results)
+        console.log('%c Done fetching people ', 'background: red; color: white', );
       })
   }, [])
 
   console.log('%c people ', 'background: red; color: white', people)
 
+  var array1 = [1, 4, 9, 16]
+  const map1 = array1.map(x => x * 2)
+  console.log('%c map1 ', 'background: blue; color: white', map1);
+
   const peopleList = people.map((person, index) => {
     return(
       <Person
         key={index}
-        person={person}
+        PersonObj={person}
       />
     )
   })
@@ -55,10 +61,10 @@ function Person(props) {
 
   return(
       <div className="card">
-        <img src={props.person.picture.large} alt={props.person.name.first}></img>
-        <h3 className="big-text">{toTitleCase(props.person.name.first)}</h3>
+        <img src={props.PersonObj.picture.large} alt={props.PersonObj.name.first}></img>
+        <h3 className="big-text">{toTitleCase(props.PersonObj.name.first)}</h3>
         <p className="fine-print"><i>from</i></p>
-        <p>{toTitleCase(props.person.location.state)}</p>
+        <p>{toTitleCase(props.PersonObj.location.state)}</p>
       </div>
   )
 }

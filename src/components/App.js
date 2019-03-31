@@ -22,13 +22,12 @@ export default function App(props) {
       window.addEventListener("offline", () => (dispatch({ type: CONSTANTS.SET_IS_ONLINE, payload: false })))
     }, [])
 
-    const setOnlineEventListener = (zip) => {
+    const setZip = (zip) => {
       dispatch({ type: CONSTANTS.SET_ZIP, payload: zip })
       localStorage.setItem('zip', zip)
     }
 
     // Screen width event listener
-    // Set device screen width
     let screenWidth
 
     const resize = () => {
@@ -80,7 +79,7 @@ export default function App(props) {
           console.log(data.postal)
           console.log(data.is_eu)
           console.log(data.country_code)
-          setOnlineEventListener(data.postal)
+          setZip(data.postal)
           setIsEu(data.is_eu)
           setCountryCode(data.country_code)
           console.log('%c Fetch Success ', 'background: red; color: white', );
@@ -92,8 +91,6 @@ export default function App(props) {
       console.log('%c I am hiding the spinner ', 'background: red; color: white', );
       props.hideLoader()
     }, [])
-
-    console.log('%c I am App ', 'background: green; color: white', )
 
   return (
     <DwContext.Provider value={{ state, dispatch}}>
