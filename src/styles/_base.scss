@@ -1,0 +1,12 @@
+// Box model fix:
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+// Misc formating
+body {
+  margin: 0 40px;
+}

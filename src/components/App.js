@@ -6,7 +6,7 @@ import DwContext from '../context'
 import dwReducer, * as CONSTANTS from '../reducer'
 import Router from './Router'
 
-import './App.css'
+import '../styles/main.scss'
 
 // TODO Check local storage for zip before calling API ??
 
@@ -84,12 +84,6 @@ export default function App(props) {
           setCountryCode(data.country_code)
           console.log('%c Fetch Success ', 'background: red; color: white', );
         })
-    }, [])
-
-    // Stop spinner after first render
-    useEffect(() => {
-      console.log('%c I am hiding the spinner ', 'background: red; color: white', );
-      props.hideLoader()
     }, [])
 
   return (
