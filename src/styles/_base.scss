@@ -10,3 +10,42 @@ html {
 body {
   margin: 0 40px;
 }
+
+//////// Crop image square and mke responsive ////////
+.image-grid {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+  // margin: 0 auto 35px;
+  // max-width: 920px;
+  padding: 0px;
+}
+.image-fit {
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  margin: 5px;
+  position: relative;
+  width: calc(100% - 10px);
+}
+.image-fit-placeholder {
+  height: 100%;
+  visibility: hidden;
+  width: 100%;
+}
+.image-fit-img {
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+}
+//////// End crop image square and mke responsive ////////

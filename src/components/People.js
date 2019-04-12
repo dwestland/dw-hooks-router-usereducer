@@ -4,7 +4,8 @@ import './People.scss'
 
 export default function People() {
 
-const [people, setPeople] = useState([])
+  const [people, setPeople] = useState([])
+  console.log('%c process.env.SASS_PATH ', 'background: red; color: white', process.env.SASS_PATH);
 
   // Fetch ipdata.co client info
   useEffect(() => {
